@@ -186,6 +186,33 @@ Compare two approaches to the same task by cost: `run_a.total_cost` vs `run_b.to
 
 `.tine` artifacts carry the security policy that governed the run (filesystem bounds, network restrictions, shell/python disabled). A verifier can confirm the audit was conducted under the claimed constraints.
 
+## Cross-CLI Slash Commands
+
+The `opentine_cli_commands` package installs opentine provenance commands into multiple AI agent CLIs:
+
+```bash
+# Install for all detected CLIs
+python -m opentine_cli_commands install --target all
+
+# Install for a specific CLI
+python -m opentine_cli_commands install --target hermes
+python -m opentine_cli_commands install --target claude
+python -m opentine_cli_commands install --target codex
+
+# Check what's installed
+python -m opentine_cli_commands status
+```
+
+| CLI | Integration | Commands |
+|-----|-------------|----------|
+| **Hermes** | Plugin (`/tine`) | `/tine list`, `/tine show`, `/tine fork`, `/tine diff`, `/tine replay`, `/tine budget`, `/tine verify` |
+| **Claude Code** | Markdown prompts | `/tine-list`, `/tine-show`, `/tine-fork`, `/tine-diff`, `/tine-replay` |
+| **Codex CLI** | MCP server | `list_runs`, `show_run`, `fork_run`, `diff_runs` (auto-discovered) |
+| **OpenCode** | MCP server | Same as Codex |
+| **Kimi Code** | MCP server | Same as Codex |
+
+The Hermes plugin provides the richest experience — 8 slash commands with formatted output, budget tracking, and integrity verification. The MCP-based integrations (Codex, OpenCode, Kimi) expose the same 4 core tools that any MCP-compatible client can call.
+
 ## Verification
 
 Every `.tine` can be verified offline:
