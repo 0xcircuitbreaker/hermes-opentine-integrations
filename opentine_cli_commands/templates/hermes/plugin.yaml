@@ -1,0 +1,6 @@
+name: opentine
+version: "0.1.0"
+description: "Slash commands for opentine agent run provenance: list, inspect, fork, diff, replay, and budget tracking."
+author: "0xcircuitbreaker / Daedalus Development Group"
+provides_tools:
+  - tine

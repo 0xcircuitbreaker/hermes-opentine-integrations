@@ -1,0 +1,11 @@
+{
+  "mcp_servers": {
+    "opentine": {
+      "command": "python",
+      "args": ["-m", "opentine.mcp_server"],
+      "env": {
+        "OPENTINE_RUNS_DIR": "~/.tine_runs"
+      }
+    }
+  }
+}
